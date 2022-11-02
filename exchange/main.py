@@ -1,7 +1,9 @@
+from datetime import datetime
 import requests
 from config import URL, HEADERS, rules
 from mail import mailjet, generate_date
 from notification import send
+from khayyam import JalaliDatetime
 import json
 
 payload = {}
@@ -31,7 +33,6 @@ def send_email(date, rates):
         rates = tmp
     data = generate_date(subject, json.dumps(rates))
     result = mailjet.send.create(data=data)
-    print(result)
 
 
 def check_rules_notif(rates):
@@ -39,13 +40,15 @@ def check_rules_notif(rates):
     message = ''
     for exc in preferred.keys():
         if rates[exc] <= preferred[exc]["min"]:
-            message = f"{exc} reached min {preferred[exc]['min']}"
+            message = f"{exc} reached min {preferred[exc]['min']} \n"
         elif rates[exc] >= preferred[exc]["max"]:
-            message = f"{exc} reached max {preferred[exc]['max']}"
+            message = f"{exc} reached max {preferred[exc]['max']} \n"
     return message
 
 
 def send_notif(text=None):
+    now = JalaliDatetime(datetime.now()).strftime('%y-%B-%d  %A  %H:%M')
+    text = text + now
     send(text)
 
 
