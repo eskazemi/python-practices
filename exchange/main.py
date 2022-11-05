@@ -1,24 +1,25 @@
 from datetime import datetime
-import requests
-from config import URL, HEADERS, rules
+from config import rules, API_KEY
 from mail import mailjet, generate_date
 from notification import send
 from khayyam import JalaliDatetime
+from fixer import get_rates
 import json
 
-payload = {}
-
-
-def get_rate():
-    response = requests.request("GET", URL, headers=HEADERS, data=payload)
-
-    if response.status_code == 200:
-        return json.loads(response.text)
-    else:
-        return None
 
 
 def archive(filename, rates):
+    """
+    This function get filename and rates , save them to the specific directory
+    rates
+    Args:
+        filename
+        rates
+    Raises:
+        TypeError
+    Returns:
+        ...
+    """
     with open(f'archive/{filename}.json', 'w') as f:
         f.write(json.dumps(rates))
 
@@ -53,7 +54,7 @@ def send_notif(text=None):
 
 
 if __name__ == "__main__":
-    res = get_rate()
+    res = get_rates(API_KEY)
     if rules["archive"]:
         archive(res["timestamp"], res["rates"])
     if rules["email"].get("enable"):
