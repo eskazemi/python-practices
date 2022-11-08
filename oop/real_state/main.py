@@ -33,3 +33,4 @@ if __name__ == '__main__':
     )
     print(apartment_sell.manager.search(region=r1))
     print(apartment_rant.manager.get(region=r1))
+    print(apartment_rant.manager.search(rooms_count__min=3, rooms_count__max=4))
