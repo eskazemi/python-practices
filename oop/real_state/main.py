@@ -24,4 +24,12 @@ if __name__ == '__main__':
         has_parking=True, has_elevator=True, floor=5,
         price_per_meter=12000, convertable=False, discountable=True
     )
-    apartment_sell.show_detail()
+    apartment_rant = ApartmentRant(
+        user=User.object_list[0], area=140, rooms_count=2,
+        built_year=1399, region=r1, address="Tehran",
+        has_parking=True, has_elevator=True, floor=5,
+        initial_price=10000000,
+        monthly_price=5000000
+    )
+    print(apartment_sell.manager.search(region=r1))
+    print(apartment_rant.manager.get(region=r1))

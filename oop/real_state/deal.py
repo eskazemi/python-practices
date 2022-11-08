@@ -14,7 +14,8 @@ class Sell(ABC):
 
 
 class Rant(ABC):
-    def __init__(self, initial_price, monthly_price, convertable, discountable
+    def __init__(self, initial_price, monthly_price, convertable=False,
+                 discountable=True
                  , *args, **kwargs):
         self.initial_price = initial_price
         self.monthly_price = monthly_price
