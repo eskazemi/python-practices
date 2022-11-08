@@ -54,3 +54,8 @@ class Manager:
                 if result:
                     return obj
 
+
+
+    def count(self):
+        return len(self._class.object_list)
+

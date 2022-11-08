@@ -9,8 +9,8 @@ class Sell(ABC):
         self.covertable = convertable
         super().__init__(*args, **kwargs)
 
-    def show_price(self):
-        print(f"{self.price_per_meter}")
+    def show_discountable(self):
+        print(f"{self.discountable}")
 
 
 class Rant(ABC):
@@ -22,3 +22,6 @@ class Rant(ABC):
         self.covertable = convertable
         self.discountable = discountable
         super().__init__(*args, **kwargs)
+
+    def show_discountable(self):
+        print(f"{self.discountable}")

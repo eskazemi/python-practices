@@ -7,28 +7,37 @@ class ApartmentSell(Apartment, Sell, Base):
 
     def show_detail(self):
         self.show_description()
-        self.show_price()
+        self.show_discountable()
+
 
 
 class ApartmentRant(Apartment, Rant, Base):
-    pass
+    def show_detail(self):
+        self.show_description()
+        self.show_discountable()
+
 
 
 class HouseSell(House, Sell, Base):
     def show_detail(self):
         self.show_description()
-        self.show_price()
+        self.show_discountable()
 
 
 class HouseRant(House, Rant, Base):
-    pass
+    def show_detail(self):
+        self.show_description()
+        self.show_discountable()
 
 
 class StoreSell(Store, Sell, Base):
     def show_detail(self):
         self.show_description()
-        self.show_price()
+        self.show_discountable()
 
 
 class StoreRant(Store, Rant, Base):
-    pass
+    def show_detail(self):
+        self.show_description()
+        self.show_discountable()
+
