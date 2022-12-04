@@ -7,7 +7,14 @@ def search_insert(array,val):
     [1,3,5,9], 2 -> 1
     [1,3,5,6], 7 -> 4
     [1,3,5,6], 0 -> 0
-    
+    Args:
+        list (array): [2,4,5,7,8]
+        val (int)
+    Raises:
+        TypeError: array is not instance list
+        TypeError: val is not int
+    Returns:
+            index val
     """
     low=0
     high=len(array)-1
